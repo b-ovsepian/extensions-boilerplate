@@ -12,16 +12,16 @@ const bundlePath = path.resolve(__dirname, "dist/");
 
 module.exports = (_env, argv) => {
   let entryPoints = {
-    // VideoComponent: {
-    //   path: "./src/VideoComponent.js",
-    //   outputHtml: "video_component.html",
-    //   build: true,
-    // },
-    // VideoOverlay: {
-    //   path: "./src/VideoOverlay.js",
-    //   outputHtml: "video_overlay.html",
-    //   build: true,
-    // },
+    VideoComponent: {
+      path: "./src/VideoComponent.js",
+      outputHtml: "video_component.html",
+      build: false,
+    },
+    VideoOverlay: {
+      path: "./src/VideoOverlay.js",
+      outputHtml: "video_overlay.html",
+      build: false,
+    },
     Panel: {
       path: "./src/Panel.js",
       outputHtml: "panel.html",
@@ -32,16 +32,16 @@ module.exports = (_env, argv) => {
       outputHtml: "config.html",
       build: true,
     },
-    // LiveConfig: {
-    //   path: "./src/LiveConfig.js",
-    //   outputHtml: "live_config.html",
-    //   build: true,
-    // },
-    // Mobile: {
-    //   path: "./src/Mobile.js",
-    //   outputHtml: "mobile.html",
-    //   build: true,
-    // },
+    LiveConfig: {
+      path: "./src/LiveConfig.js",
+      outputHtml: "live_config.html",
+      build: true,
+    },
+    Mobile: {
+      path: "./src/Mobile.js",
+      outputHtml: "mobile.html",
+      build: false,
+    },
   };
 
   let entry = {};
@@ -85,13 +85,14 @@ module.exports = (_env, argv) => {
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: ["style-loader", "css-loader", "postcss-loader"],
         },
         {
           test: /\.scss$/,
           use: [
             "style-loader", // creates style nodes from JS strings
             "css-loader", // translates CSS into CommonJS
+            "postcss-loader", // postcss loader
             "sass-loader", // compiles Sass to CSS, using Node Sass by default
           ],
         },

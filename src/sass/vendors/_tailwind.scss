@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @include font-face(
+    "SpaceGrotesk",
+    "../fonts/SpaceGrotesk/SpaceGrotesk-Light",
+    300
+  );
+  @include font-face(
+    "SpaceGrotesk",
+    "../fonts/SpaceGrotesk/SpaceGrotesk-Regular",
+    400
+  );
+  @include font-face(
+    "SpaceGrotesk",
+    "../fonts/SpaceGrotesk/SpaceGrotesk-Medium",
+    500
+  );
+  @include font-face(
+    "SpaceGrotesk",
+    "../fonts/SpaceGrotesk/SpaceGrotesk-Bold",
+    700
+  );
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-body text-sm text-secondary lg:text-base;
+  font-family: "SpaceGrotesk", sans-serif;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.font-spacegrotesk {
+  *:not(html):not(body) {
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+      border-radius: 8px;
+      background: rgba(var(--color-gray-dark), 1);
+      border-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background: RGB(var(--color-secondary-default), 0.75);
+      border-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: RGB(var(--color-secondary-default), 1);
+      border-color: transparent;
+    }
+  }
+}

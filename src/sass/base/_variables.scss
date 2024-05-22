@@ -1,0 +1,74 @@
+:root {
+    --color-body: 255, 255, 255;
+    --color-card: 240, 240, 241;
+    --color-secondary-default: 83, 82, 87;
+    --color-secondary-lighter: 125, 124, 129;
+
+    --color-mint-light: 120, 217, 191;
+    --color-mint-default: 86, 207, 175;
+    --color-mint-dark: 69, 166, 140;
+
+    --color-cyan-light: 115, 174, 226;
+    --color-cyan-default: 80, 154, 219;
+    --color-cyan-dark: 64, 123, 175;
+
+    --color-blue-light: 114, 137, 226;
+    --color-blue-default: 79, 107, 219;
+    --color-blue-dark: 63, 86, 175;
+
+    --color-violet-light: 127, 117, 209;
+    --color-violet-default: 116, 102, 219;
+    --color-violet-dark: 93, 82, 175;
+
+    --color-pink-light: 225, 125, 225;
+    --color-pink-default: 218, 92, 217;
+    --color-pink-dark: 174, 74, 174;
+
+    --color-rose-light: 235, 95, 159;
+    --color-rose-default: 230, 55, 135;
+    --color-rose-dark: 184, 44, 108;
+
+    --color-red-light: 237, 96, 100;
+    --color-red-default: 233, 56, 61;
+    --color-red-dark: 186, 45, 49;
+
+    --color-orange-light: 234, 151, 93;
+    --color-orange-default: 229, 125, 53;
+    --color-orange-dark: 183, 100, 42;
+
+    --color-turquoise-light: 118, 249, 202;
+    --color-turquoise-default: 118, 249, 202;
+    --color-turquoise-dark: 77, 194, 220;
+
+    --color-yellow-light: 245, 193, 57;
+    --color-yellow-default: 242, 177, 8;
+    --color-yellow-dark: 194, 142, 6;
+
+    --color-lime-light: 158, 208, 65;
+    --color-lime-default: 134, 196, 18;
+    --color-lime-dark: 107, 157, 14;
+
+    --color-green-light: 93, 200, 111;
+    --color-green-default: 53, 186, 75;
+    --color-green-dark: 42, 149, 60;
+
+    --color-gray-light: 219, 219, 225;
+    --color-gray-default: 196, 205, 211;
+    --color-gray-dark: 185, 185, 195;
+    --color-gray-darker: 40, 40, 46;
+
+}
+
+$media-xs-max: 479.98px;
+$media-sm: 480px;
+$media-sm-max: 639.98px;
+$media-md: 640px;
+$media-2sm-max: 767.98px;
+$media-md-max: 1023.98px;
+$media-lg: 1024px;
+$media-lg-max: 1319.98px;
+$media-xl: 1320px;
+$media-xl-max: 1535.98px;
+$media-xxl: 1536px;
+$media-xxxl-max: 1751.98px;
+$media-xxxxl: 1752px;

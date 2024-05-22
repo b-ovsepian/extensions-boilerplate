@@ -1,76 +1,79 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import Authentication from "../../util/Authentication/Authentication";
+import React, { useCallback, useEffect, useRef, useState } from "react"
+import Authentication from "../../util/Authentication/Authentication"
 
-import "./App.css";
+import "../../sass/app.scss"
 
 export default function App() {
-  const [finishedLoading, setFinishedLoading] = useState(false);
-  const [theme, setTheme] = useState("light");
-  const [visible, setVisible] = useState(true);
+  const [finishedLoading, setFinishedLoading] = useState(false)
+  const [theme, setTheme] = useState("light")
+  const [visible, setVisible] = useState(true)
 
   //if the extension is running on twitch or dev rig, set the shorthand here. otherwise, set to null.
-  const twitchRef = useRef(window.Twitch?.ext ?? null);
-  const authenticationRef = useRef(new Authentication());
+  const twitchRef = useRef(window.Twitch?.ext ?? null)
+  const authenticationRef = useRef(new Authentication())
 
-  const twitch = twitchRef.current;
-  const authentication = authenticationRef.current;
+  const twitch = twitchRef.current
+  const authentication = authenticationRef.current
 
   const contextUpdate = useCallback((context, delta) => {
     if (delta.includes("theme")) {
-      setTheme(context.theme);
+      setTheme(context.theme)
+
+      // set the theme in the document body
+      document.documentElement.className = context.theme
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (twitch) {
       twitch.onAuthorized((auth) => {
-        authentication.setToken(auth.token, auth.userId);
+        authentication.setToken(auth.token, auth.userId)
         if (!finishedLoading) {
           // if the component hasn't finished loading (as in we've not set up after getting a token), let's set it up now.
 
           // now we've done the setup for the component, let's set the state to true to force a rerender with the correct data.
-          setFinishedLoading(true);
+          setFinishedLoading(true)
         }
-      });
+      })
 
       twitch.listen("broadcast", (target, contentType, body) => {
         twitch.rig.log(
           `New PubSub message!\n${target}\n${contentType}\n${body}`
-        );
+        )
         // now that you've got a listener, do something with the result...
 
         // do something...
-      });
+      })
 
       twitch.onVisibilityChanged((visible, _c) => {
-        setVisible(visible);
-      });
+        setVisible(visible)
+      })
 
       twitch.onContext((context, delta) => {
-        contextUpdate(context, delta);
-      });
+        contextUpdate(context, delta)
+      })
     }
     return () => {
       if (twitch) {
         twitch.unlisten("broadcast", () =>
           console.log("successfully unlistened")
-        );
+        )
       }
-    };
-  }, []);
+    }
+  }, [])
 
   if (finishedLoading && visible) {
     return (
-      <div className="App">
-        <div className={theme === "light" ? "App-light" : "App-dark"}>
-          <p>Hello world!</p>
+      <div className="font-spacegrotesk">
+        <div>
+          <p className="text-3xl font-bold underline mb-2">Hello world!</p>
           {/* <p>My token is: {authentication.state.token}</p> */}
           <p>My opaque ID is {authentication.getOpaqueId()}.</p>
           <div>
             {authentication.isModerator() ? (
               <p>
                 I am currently a mod, and here's a special mod button{" "}
-                <input value="mod button" type="button" />
+                <input value="mod button" className="btn" type="button" />
               </p>
             ) : (
               "I am currently not a mod."
@@ -85,8 +88,8 @@ export default function App() {
           </p>
         </div>
       </div>
-    );
+    )
   } else {
-    return <div className="App"></div>;
+    return <div className="App"></div>
   }
 }
