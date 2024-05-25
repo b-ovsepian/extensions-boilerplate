@@ -3,34 +3,27 @@
 @tailwind utilities;
 
 @layer base {
-  @include font-face(
-    "SpaceGrotesk",
+  @include font-face("SpaceGrotesk",
     "../fonts/SpaceGrotesk/SpaceGrotesk-Light",
-    300
-  );
-  @include font-face(
-    "SpaceGrotesk",
+    300);
+  @include font-face("SpaceGrotesk",
     "../fonts/SpaceGrotesk/SpaceGrotesk-Regular",
-    400
-  );
-  @include font-face(
-    "SpaceGrotesk",
+    400);
+  @include font-face("SpaceGrotesk",
     "../fonts/SpaceGrotesk/SpaceGrotesk-Medium",
-    500
-  );
-  @include font-face(
-    "SpaceGrotesk",
+    500);
+  @include font-face("SpaceGrotesk",
     "../fonts/SpaceGrotesk/SpaceGrotesk-Bold",
-    700
-  );
+    700);
 }
 
 html {
+  @apply h-full;
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-body text-sm text-secondary lg:text-base;
+  @apply bg-body text-sm text-secondary lg:text-base h-full;
   font-family: "SpaceGrotesk", sans-serif;
   font-feature-settings: "tnum";
   font-variant-numeric: tabular-nums;
