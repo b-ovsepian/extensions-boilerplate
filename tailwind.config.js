@@ -4,6 +4,9 @@ const defaultTheme = require("tailwindcss/defaultTheme")
 const colors = require("tailwindcss/colors")
 
 module.exports = {
+  daisyui: {
+    themes: ["light", "dark", "cyberpunk"],
+  },
   darkMode: "selector",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -52,8 +55,15 @@ module.exports = {
         // "green-dark": "#30A744",
       },
       textColor: (theme) => ({ ...theme("colors") }),
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
       animation: {
         "ping-slow": "ping 2s linear infinite",
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
     },
     screens: {
